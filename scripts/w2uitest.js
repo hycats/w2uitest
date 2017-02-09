@@ -1,6 +1,7 @@
 var mymodule = angular.module('myApp', ['ngSanitize']);
 
 mymodule.controller('MyController', ['$scope', function ($scope) {
+
     $scope.tablist = [
         { id: 'tab_top', caption: 'Top' },
         { id: 'tab_kakeibo', caption: '家計簿' },
@@ -41,6 +42,22 @@ mymodule.controller('MyController', ['$scope', function ($scope) {
 }]);
 
 mymodule
+    .directive('myDate', function () {
+        return {
+            restrict: 'A',
+            replace: true,
+            template: '<input class="w2field dt" required value={{now}}>',
+            link: function (scope, element, attrs) {
+                var d = new Date();                
+                scope.now = d.toLocaleDateString( 'ja-JP',{ year:"numeric", month:"2-digit", day:"2-digit"} );
+                element.w2field('date', { format: 'yyyy/mm/dd' });
+                //$.datepicker.setDefaults($.datepicker.regional['ja']);
+                //element.datepicker();
+            }
+        }
+    });
+
+mymodule
     .directive('myTab2', function () {
         return {
             restrict: 'A',
@@ -67,7 +84,9 @@ mymodule
                 $('#' + attrs.id).w2toolbar({
                     name: 'myToolbar',
                     items: [
-                        { type: 'html', id: 'item1', html: '<input id="id_item1">' }
+                        {
+                            type: 'html', id: 'item1', html: '<input class="w2field" my-date id="id_item1">'
+                        }
                     ],
                     onRefresh: function (event) {
                         console.log('object' + event.target + ' is refreshed');
@@ -79,7 +98,22 @@ mymodule
                             };
                         }
                     }
+
                 });
+
+                w2ui['myToolbar'].on("refresh", function (event) {
+                    console.log('object' + event.target + ' is refreshed');
+                    if (event.target == 'item1') {
+                        // w2field in toolbar must be initialized during refresh
+                        // see: https://github.com/vitmalina/w2ui/issues/886
+                        event.onComplete = function (ev) {
+                            $("#id_item1").w2field('date', { format: 'd.m.yyyy' });
+                        };
+                    }
+
+                });
+
+                console.log(w2ui['myToolbar']);
             }
         }
     });

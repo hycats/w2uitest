@@ -1,3 +1,7 @@
 td.w2ui-head {
     text-align: center !important;
 }
+
+.w2field.dt {
+    width: 70px;
+}
