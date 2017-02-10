@@ -9,3 +9,7 @@ td.w2ui-head {
 .fontawesome {
     font-family: FontAwesome;
 }
+
+.fontawesome.bt {
+    padding: 0;
+}

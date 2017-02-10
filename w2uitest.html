@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
-    <head>
-        <meta charset="UTF-8" />
-        <title>w2ui test</title>
-        <link href="../font/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-        <!-- <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" /> -->
-        <!-- jQuery は angular より先にインポートしないと directiveのelementが　jQueryオブジェクトにならない！ -->
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-        <!-- <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script> -->
-        <script src="../bower_components/angular/angular.min.js"></script>
-        <script src="../bower_components/angular-i18n/angular-locale_ja-jp.js"></script>
-        <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-        <!-- <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script> -->
-        <link rel="stylesheet" type="text/css" href="../bower_components/w2ui/w2ui-1.4.3.min.css" />
-        <script src="../bower_components/w2ui/w2ui-1.4.3.min.js"></script>
-        <script src="scripts/w2uitest.js"></script>
-        <link rel="stylesheet" type="text/css" href="w2uitest.css" />
-    </head>
-    <body ng-controller="MyController">
-        <!--<div my-tab id="tabs"></div>-->
-        <div my-tab2 id="tabs" name="tabs" active="tablist[0].id" tabs="tablist"></div>
-        <div><input type="button" class="fontawesome" value="&#xf104;"><input my-date ><button type="button">＞</button></div>
-        <!-- <div my-toolbar id="myToolbar"></div> -->
-        <!-- <div my-table id="grid" style="width:100%; height:500px;"></div> -->
-        <div my-table2 id="grid" style="width:100%; height:500px;" config="grid_config"></div>
-    </body>
-</html>
 
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>w2ui test</title>
+    <!--<link href="../font/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />-->
+    <script src="https://use.fontawesome.com/f145d9e5a3.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />-->
+    <!-- jQuery は angular より先にインポートしないと directiveのelementが　jQueryオブジェクトにならない！ -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script> -->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-i18n/angular-locale_ja-jp.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <!-- <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="../bower_components/w2ui/w2ui-1.4.3.min.css" />
+    <script src="../bower_components/w2ui/w2ui-1.4.3.min.js"></script>
+    <script src="scripts/w2uitest.js"></script>
+    <link rel="stylesheet" type="text/css" href="w2uitest.css" />
+</head>
+
+<body ng-controller="MyController">
+    <!--<div my-tab id="tabs"></div>-->
+    <div my-tab2 id="tabs" name="tabs" active="tablist[0].id" tabs="tablist"></div>
+    <div><input type="button" class="fontawesome bt" value="&#xf053;" />
+        <input my-date />
+        <input type="button" class="fontawesome bt" value="&#xf054;" />
+    </div>
+    <!-- <div my-toolbar id="myToolbar"></div> -->
+    <!-- <div my-table id="grid" style="width:100%; height:500px;"></div> -->
+    <div my-table2 id="grid" style="width:100%; height:500px;" config="grid_config"></div>
+</body>
+
+</html>

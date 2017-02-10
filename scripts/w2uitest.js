@@ -3,10 +3,10 @@ var mymodule = angular.module('myApp', ['ngSanitize']);
 mymodule.controller('MyController', ['$scope', function ($scope) {
 
     $scope.tablist = [
-        { id: 'tab_top', caption: 'Top' },
-        { id: 'tab_kakeibo', caption: '家計簿' },
-        { id: 'tab_graph', caption: 'グラフ' },
-        { id: 'tab_setting', caption: '設定' }
+        { id: 'tab_top', caption: '<i class="fa fa-home fa-lg"></i>' },
+        { id: 'tab_kakeibo', caption: '<i class="fa fa-table fa-lg"></i>' },
+        { id: 'tab_graph', caption: '<i class="fa fa-line-chart fa-lg"></i>' },
+        { id: 'tab_setting', caption: '<i class="fa fa-cog fa-fw fa-lg"></i>' }
     ];
 
     $scope.grid_config = {
