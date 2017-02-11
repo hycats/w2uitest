@@ -24,9 +24,9 @@
 <body ng-controller="MyController">
     <!--<div my-tab id="tabs"></div>-->
     <div my-tab2 id="tabs" name="tabs" active="tablist[0].id" tabs="tablist"></div>
-    <div><input type="button" class="fontawesome bt" value="&#xf053;" />
+    <div ng-model="curdate"><input type="button" class="fontawesome bt" value="&#xf053;" ng-click="onclick(-1)"/>
         <input my-date />
-        <input type="button" class="fontawesome bt" value="&#xf054;" />
+        <input type="button" class="fontawesome bt" value="&#xf054;" ng-click="onclick(1)"/>
     </div>
     <!-- <div my-toolbar id="myToolbar"></div> -->
     <!-- <div my-table id="grid" style="width:100%; height:500px;"></div> -->

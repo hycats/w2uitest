@@ -2,6 +2,12 @@ var mymodule = angular.module('myApp', ['ngSanitize']);
 
 mymodule.controller('MyController', ['$scope', function ($scope) {
 
+    $scope.curdate = new Date();
+
+    $scope.onclick = function (val) {
+        $scope.curdate.setDate($scope.curdate.getDate()+val);
+    };
+
     $scope.tablist = [
         { id: 'tab_top', caption: '<i class="fa fa-home fa-lg"></i>' },
         { id: 'tab_kakeibo', caption: '<i class="fa fa-table fa-lg"></i>' },
@@ -48,11 +54,21 @@ mymodule
             replace: true,
             template: '<input class="w2field dt" required value={{now}}>',
             link: function (scope, element, attrs) {
-                var d = new Date();                
-                scope.now = d.toLocaleDateString( 'ja-JP',{ year:"numeric", month:"2-digit", day:"2-digit"} );
-                element.w2field('date', { format: 'yyyy/mm/dd' });
+
+                var updateDate = function() {
+                    var d = scope.curdate;
+                    scope.now = d.toLocaleDateString('ja-JP', { year: "numeric", month: "2-digit", day: "2-digit" });
+                    element.w2field('date', { format: 'yyyy/mm/dd' });
+                    console.log( scope.now);
+                };
                 //$.datepicker.setDefaults($.datepicker.regional['ja']);
                 //element.datepicker();
+
+                scope.$watch( 'curdate',
+                function(newValue,oldValue,scope){
+                    console.log( newValue );
+                    updateDate();
+                });
             }
         }
     });
