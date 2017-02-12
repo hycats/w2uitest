@@ -23,7 +23,7 @@
 
 <body ng-controller="MyController">
     <!--<div my-tab id="tabs"></div>-->
-    <div my-tab2 id="tabs" name="tabs" active="tablist[0].id" tabs="tablist"></div>
+    <div my-tab2 id="tabs" name="tabs" active="tablist[0].id" tabs="tablist" ng-click="click_tab()"></div>
     <div ng-model="curdate">
         <button class="fontawesome bt" ng-click="onclick(-1)"><i class="fa fa-chevron-left"></i></button>
         <input my-date />

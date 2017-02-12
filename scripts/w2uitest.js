@@ -8,6 +8,10 @@ mymodule.controller('MyController', ['$scope', function ($scope) {
         $scope.curdate.setDate($scope.curdate.getDate()+val);
     };
 
+    $scope.click_tab = function() {
+        console.log("ok");
+    };
+
     $scope.tablist = [
         { id: 'tab_top', caption: '<i class="fa fa-home fa-lg"></i>' },
         { id: 'tab_kakeibo', caption: '<i class="fa fa-table fa-lg"></i>' },
@@ -147,3 +151,53 @@ mymodule
             }
         }
     });
+
+mymodule
+    .directive('myTab', function() {
+        return {
+            require: '^^myTabPanel',
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            tmplate: '<div ngshow="show" ng-transclude></div>',
+            scope: {
+                title: '@'
+            },
+            link: function(scope, element, attrs, panelController) {
+                panelController.AddTab(scope);
+            }
+        }
+    });
+
+mymodule
+    .directive('myTabPanel', function() {
+        return {
+            restrict: 'E',
+            transclude: true,
+            replace: true,
+            scope: {
+                name: '@',
+                active: '@'
+            },
+            teplate: '<div my-tab2 name="{{name}}"></div>',
+            controller: ['$scope', function($scope) {
+                $scope.tabs = [];
+
+                this.addTab = function(tab) {
+                    $scope.tabs.push(tab);
+                    if ($scope.tabs.length - 1 === Number($scope.active)) {
+                        $scope.onselect(tab);
+                    }
+                };
+
+                $scope.onselect = function(tab) {
+                    angular.forEach($scope.tabs, function(t) {
+                        t.show = false;
+                        t.selected = false;
+                    });
+                    tab.show = true;
+                    tab.selected = true;
+                };
+            }]
+        }
+    });    
